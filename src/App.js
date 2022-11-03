@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import "./App.css";
+import WebcamCapture from "./Components/WebcamCapture";
+import Preview from "./Components/Preview";
+import Chats from "./Components/Chats";
+import Button from "@material-ui/core/Button";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { isMobile } from "react-device-detect";
+// {isMobile && <div> This content is available only on mobile</div>}
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <div className="app__body">
+          <Routes>
+            <Route path="chats" element={<Chats />} />
+            <Route path="preview" element={<Preview />} />
+            <Route exact path="/" element={<WebcamCapture />} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }
