@@ -19,9 +19,11 @@ import { v4 as uuid } from "uuid";
 import { ref, getDownloadURL, uploadString } from "firebase/storage";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { storage, db } from "../firebase";
+import { selectUser } from "../features/appSlice";
 
 const Preview = () => {
   const src = useSelector(selectCameraImage);
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [imgUrl, setImgUrl] = useState(null);
@@ -36,7 +38,7 @@ const Preview = () => {
   };
   const sendPost = () => {
     const id = uuid();
-    // Create a reference to 'mountains.jpg'
+    // Create a reference to 'posts/id'
     const imageRef = ref(storage, `posts/${id}`);
     // Data URL string
     uploadString(imageRef, src, "data_url").then(snapshot => {
@@ -46,15 +48,16 @@ const Preview = () => {
         setDoc(
           doc(db, "posts", id),
           {
-            username: "username",
+            username: user.username,
             postImage: URL,
             read: false,
-            // profilePic
+
+            userPicture: user.profilePic,
             timestamp: serverTimestamp()
           },
           { merge: true }
         );
-        navigate("/");
+        navigate("/chats");
       });
     });
   };

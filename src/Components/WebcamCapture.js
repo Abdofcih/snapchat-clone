@@ -9,6 +9,8 @@ import "./WebcamCapture.css";
 import Webcam from "react-webcam";
 import RadioButtonUnchecked from "@material-ui/icons/RadioButtonUnchecked";
 import { useNavigate } from "react-router-dom";
+import { isMobile } from "react-device-detect";
+import { Button } from "@material-ui/core";
 
 const videoConstraints = {
   width: 250,
@@ -28,6 +30,14 @@ const WebcamCapture = () => {
   }, [webcamRef]);
   return (
     <div className="webcamCapture">
+      {isMobile && (
+        <div>
+          Now this only works on PC you can
+          <Button variant="outlined" onClick={() => navigate("/chats")}>
+            View Snaps
+          </Button>
+        </div>
+      )}
       <Webcam
         audio={false}
         height={videoConstraints.height}

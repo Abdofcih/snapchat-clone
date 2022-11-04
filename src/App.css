@@ -7,3 +7,15 @@
   height: 100vh;
   background-color: #fefc01;
 }
+.app__body {
+  background: url(https://www.pngkey.com/png/full/859-8598072_picture-freeuse-library-silhouette-at-getdrawings-cell.png)
+    no-repeat center;
+  background-size: contain;
+  height: 400px;
+  width: 250px;
+  padding: 72px;
+}
+.app__bodyBackground {
+  background-color: white;
+  height: 400px;
+}

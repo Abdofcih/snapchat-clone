@@ -5,12 +5,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD8cTCUJijMgy1zd_2qjnWDcnhhqTZLBog",
-  authDomain: "snapchatt-t.firebaseapp.com",
-  projectId: "snapchatt-t",
-  storageBucket: "snapchatt-t.appspot.com",
-  messagingSenderId: "163076112933",
-  appId: "1:163076112933:web:2f7a3bdd4ac77b0cddb5cc"
+  apiKey: ,
+  authDomain: ,
+  projectId: ,
+  storageBucket: ,
+  messagingSenderId: ,
+  appId: "
 };
 
 // Initialize Firebase
