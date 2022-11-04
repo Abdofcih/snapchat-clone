@@ -26,7 +26,7 @@ const Preview = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [imgUrl, setImgUrl] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!src) navigate("/");
@@ -37,6 +37,12 @@ const Preview = () => {
     navigate("/");
   };
   const sendPost = () => {
+    if (loading) {
+      // do not run any athing
+      return;
+    }
+
+    setLoading(true);
     const id = uuid();
     // Create a reference to 'posts/id'
     const imageRef = ref(storage, `posts/${id}`);
@@ -75,8 +81,14 @@ const Preview = () => {
       <CloseIcon className="preview__close" onClick={closePreview} />
       <img src={src} />
       <div className="preview__footer" onClick={sendPost}>
-        <h2>Send Now</h2>
-        <SendIcon className="preview__sendIcon" fontSize="small" />
+        {loading ? (
+          <h2>Wait ....</h2>
+        ) : (
+          <>
+            <h2>Send Now</h2>
+            <SendIcon className="preview__sendIcon" fontSize="small" />
+          </>
+        )}
       </div>
     </div>
   );
