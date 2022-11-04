@@ -12,18 +12,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  useEffect(() => {
-    if (isMobile) {
-      dispatch(
-        login({
-          username: "mobile",
-          profilePic: null,
-          id: "xyz01"
-        })
-      );
-      navigate("/chats");
-    }
-  }, [isMobile]);
+
   const signIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
